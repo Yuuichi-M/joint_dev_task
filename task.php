@@ -2,7 +2,7 @@
 # 回答の出力を確認される際は，「php task.php」をターミナルから実行して下さい。
 
 <?php
-
+/*
 print("#####q1#####" . PHP_EOL);
 $names = ["田中", "佐藤", "佐々木", "高橋"];
 
@@ -234,15 +234,32 @@ foreach ($users as $key => $user) {
 }
 
 echo PHP_EOL;
-/*
+*/
 print("#####q17#####" . PHP_EOL);
 class User
 {
 
-  # コードを追加
+  protected $name;
+  protected $age;
+  protected $gender;
 
+  # constructメソッドに引数追加
+  public function __construct($user_name, $user_age, $user_gender)
+  {
+    $this->name = $user_name;
+    $this->age = $user_age;
+    $this->gender = $user_gender;
+  }
+
+  public function info()
+  {
+    print("名前:" . $this->name . PHP_EOL);
+    print("年齢:" . $this->age . PHP_EOL);
+    print("性別:" . $this->gender . PHP_EOL);
+  }
 }
 
+# constructメソッドに値を渡す
 $user1 = new User("神里", 32, "男");
 $user2 = new User("あじー", 32, "男");
 
@@ -254,7 +271,27 @@ echo PHP_EOL;
 
 print("#####q18#####" . PHP_EOL);
 
-# コードを追加
+class Man
+{
+  protected $name;
+  protected $age;
+
+  public function __construct($user_name, $user_age)
+  {
+    $this->name = $user_name;
+    $this->age = $user_age;
+  }
+
+  public function introduce()
+  {
+    #年齢による場合分け(条件分岐)
+    if ($this->age > 20) {
+      print("こんにちは," . $this->name . "と申します。よろしくお願いいたします。" . PHP_EOL);
+    } else {
+      print("はいさいまいど〜," . $this->name . "です!!!" . PHP_EOL);
+    }
+  }
+}
 
 $man1 = new Man("あじー", 32);
 $man2 = new Man("ゆたぼん", 10);
@@ -269,7 +306,8 @@ class Item
 {
   # 以下を修正して下さい
 
-  protected $name;
+  #アクセス権修正(public : どこからでもアクセス可能)
+  public $name;
 
   function __construct($book_name)
   {
@@ -283,6 +321,7 @@ print($book->name . PHP_EOL);
 
 echo PHP_EOL;
 
+/*
 print("#####q20#####" . PHP_EOL);
 class Human
 {
