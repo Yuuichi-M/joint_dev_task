@@ -321,20 +321,45 @@ print($book->name . PHP_EOL);
 
 echo PHP_EOL;
 
-/*
 print("#####q20#####" . PHP_EOL);
 class Human
 {
+  # アクセス権はpublicにしておく
+  public $name;
+  public $ega;
 
-  # コードを追加
-
+  public function __construct($user_name, $user_age)
+  {
+    $this->name = $user_name;
+    $this->age = $user_age;
+  }
 }
 
 class Zoo
 {
+  protected $name;
+  protected $entry_fee;
 
-  # コードを追加
+  public function __construct($zoo_name, $zoo_entry_fee)
+  {
+    $this->name = $zoo_name;
+    $this->entry_fee = $zoo_entry_fee;
+  }
 
+  public function info_entry_fee($human)
+  {
+    # 年齢区分
+    # 幼児(0〜5歳)，子供(6〜12歳)，成人(13〜64歳)，シニア(65〜120歳)の4パターン
+    if ($human->age <= 5) {
+      print($human->name . "の入場料金は " . $this->entry_fee["infant"] . " 円です。" . PHP_EOL);
+    } elseif ($human->age <= 12) {
+      print($human->name . "の入場料金は " . $this->entry_fee["children"] . " 円です。" . PHP_EOL);
+    } elseif ($human->age <= 64) {
+      print($human->name . "の入場料金は " . $this->entry_fee["adult"] . " 円です。" . PHP_EOL);
+    } elseif ($human->age <= 120) {
+      print($human->name . "の入場料金は " . $this->entry_fee["senior"] . " 円です。" . PHP_EOL);
+    }
+  }
 }
 
 $zoo = new Zoo("旭山動物園", ["infant" => 0, "children" => 400, "adult" => 800, "senior" => 500]);
@@ -351,3 +376,35 @@ foreach ($humans as $human) {
 }
 
 echo PHP_EOL;
+
+print("#####q21#####" . PHP_EOL);
+/* Q21. FizzBuzz問題の応用問題です。次の仕様、条件を満たすコードを書いて下さい。
+
+仕様
+・1から30までの正の整数で
+・3の倍数でFizzを出力
+・5の倍数でBuzzを出力
+・7の倍数でHogeを出力
+・それ以外は数値を出力
+※但し15はFizzBuzz, 21はFizzHogeなど、公倍数は複数単語が出力されるようにすること。
+*/
+
+foreach (range(1, 30) as $num) {
+  if ($num % 3 == 0 && $num % 5 == 0 && $num % 7 == 0) {
+    echo "FizzBuzzHoge" . PHP_EOL;
+  } elseif ($num % 5 == 0 && $num % 7 == 0) {
+    echo "BuzzHoge" . PHP_EOL;
+  } elseif ($num % 3 == 0 && $num % 7 == 0) {
+    echo "FizzHoge" . PHP_EOL;
+  } elseif ($num % 3 == 0 && $num % 5 == 0) {
+    echo "FizzBuzz" . PHP_EOL;
+  } elseif ($num % 3 == 0) {
+    echo "Fizz" . PHP_EOL;
+  } elseif ($num % 5 == 0) {
+    echo "Buzz" . PHP_EOL;
+  } elseif ($num % 7 == 0) {
+    echo "Hoge" . PHP_EOL;
+  } else {
+    echo $num . PHP_EOL;
+  }
+}
