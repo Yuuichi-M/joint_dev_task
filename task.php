@@ -2,7 +2,7 @@
 # 回答の出力を確認される際は，「php task.php」をターミナルから実行して下さい。
 
 <?php
-/*
+
 print("#####q1#####" . PHP_EOL);
 $names = ["田中", "佐藤", "佐々木", "高橋"];
 
@@ -234,7 +234,7 @@ foreach ($users as $key => $user) {
 }
 
 echo PHP_EOL;
-*/
+
 print("#####q17#####" . PHP_EOL);
 class User
 {
@@ -326,7 +326,7 @@ class Human
 {
   # アクセス権はpublicにしておく
   public $name;
-  public $ega;
+  public $age;
 
   public function __construct($user_name, $user_age)
   {
@@ -351,13 +351,13 @@ class Zoo
     # 年齢区分
     # 幼児(0〜5歳)，子供(6〜12歳)，成人(13〜64歳)，シニア(65〜120歳)の4パターン
     if ($human->age <= 5) {
-      print($human->name . "の入場料金は " . $this->entry_fee["infant"] . " 円です。" . PHP_EOL);
+      print($human->name . "さんの入場料金は " . $this->entry_fee["infant"] . " 円です。" . PHP_EOL);
     } elseif ($human->age <= 12) {
-      print($human->name . "の入場料金は " . $this->entry_fee["children"] . " 円です。" . PHP_EOL);
+      print($human->name . "さんの入場料金は " . $this->entry_fee["children"] . " 円です。" . PHP_EOL);
     } elseif ($human->age <= 64) {
-      print($human->name . "の入場料金は " . $this->entry_fee["adult"] . " 円です。" . PHP_EOL);
+      print($human->name . "さんの入場料金は " . $this->entry_fee["adult"] . " 円です。" . PHP_EOL);
     } elseif ($human->age <= 120) {
-      print($human->name . "の入場料金は " . $this->entry_fee["senior"] . " 円です。" . PHP_EOL);
+      print($human->name . "さんの入場料金は " . $this->entry_fee["senior"] . " 円です。" . PHP_EOL);
     }
   }
 }
